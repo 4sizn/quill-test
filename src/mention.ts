@@ -937,6 +937,7 @@ export class Mention extends Module<MentionOption> {
   }
 
   onSomethingChange() {
+    console.log('onSomethingChange');
     const range = this.quill.getSelection();
     if (range == null) return;
 
@@ -954,6 +955,7 @@ export class Mention extends Module<MentionOption> {
       this.options.isolateCharacter!,
       this.options.allowInlineMentionChar!
     );
+    console.log(mentionChar, mentionCharIndex);
 
     if (
       mentionChar !== null &&
@@ -1016,12 +1018,14 @@ export class Mention extends Module<MentionOption> {
   }
 
   onTextChange(delta: Delta, oldContent: Delta, source: EmitterSource) {
+    console.log('onTextChange', delta, oldContent, source);
     if (source === "user") {
       setTimeout(this.onSomethingChange.bind(this), 50);
     }
   }
 
   onSelectionChange(range: Range | null) {
+    console.log('onSelectionChange', range);
     if (range !== null && range.length === 0) {
       this.onSomethingChange();
     } else {

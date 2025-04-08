@@ -712,6 +712,7 @@
             return textBeforeCursorPos;
         }
         onSomethingChange() {
+            console.log('onSomethingChange');
             const range = this.quill.getSelection();
             if (range == null)
                 return;
@@ -722,6 +723,7 @@
                 ? this.quill.getText(textOffset - 1, textOffset)
                 : "";
             const { mentionChar, mentionCharIndex } = getMentionCharIndex(textBeforeCursor, this.options.mentionDenotationChars, this.options.isolateCharacter, this.options.allowInlineMentionChar);
+            console.log(mentionChar, mentionCharIndex);
             if (mentionChar !== null &&
                 hasValidMentionCharIndex(mentionCharIndex, textBeforeCursor, this.options.isolateCharacter, textPrefix)) {
                 const mentionCharPos = this.cursorPos - (textBeforeCursor.length - mentionCharIndex);
@@ -768,11 +770,13 @@
             }
         }
         onTextChange(delta, oldContent, source) {
+            console.log('onTextChange', delta, oldContent, source);
             if (source === "user") {
                 setTimeout(this.onSomethingChange.bind(this), 50);
             }
         }
         onSelectionChange(range) {
+            console.log('onSelectionChange', range);
             if (range !== null && range.length === 0) {
                 this.onSomethingChange();
             }
