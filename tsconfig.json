@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "lib": ["es2017", "dom"],
+    "downlevelIteration": true,
+    "target": "es2020",
+    "moduleResolution": "node",
+    "declaration": true,
+    "noEmitOnError": true,
+    "incremental": false,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "module": "esnext",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "quill": ["quill/packages/quill/dist/quill.d.ts"],
+      "quill/core": ["quill/packages/quill/dist/core.d.ts"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
